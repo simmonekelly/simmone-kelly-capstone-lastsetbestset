@@ -104,7 +104,7 @@ export default class LogNewWorkout extends Component {
     console.log("rendered");
     //console.log(this.state.exerciseList);
     return !this.state.exerciseList ? null : (
-      <div className="d-flex flex-column py-2" style={{ height: "100vh" }}>
+      <div className="d-flex flex-column py-2 lognew" style={{ height: "100vh" }}>
         <h1>Log New Workout</h1>
         <form>
             <input
@@ -117,7 +117,7 @@ export default class LogNewWorkout extends Component {
             <ExerciseSearchResults exercise={exercise} key={exercise.id} selectWorkout={this.selectWorkout} />
         ))}
         <h3>Added Exercises</h3>
-        
+        <p>Date Completed: {new Date().toLocaleString()}</p>
         {this.state.addedExercises.map((addedExercise =>
             <AddedExercise addedExercise={addedExercise} key={addedExercise.id} />
         ))}
