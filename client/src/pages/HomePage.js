@@ -38,7 +38,7 @@ export default class HomePage extends Component {
               dolor neque. Maecenas eget leo in metus tempor tempus.
             </p>
           </div>
-          <img src="" alt="image" />
+          <img  className="home_hero-image" src={"http://localhost:8080/images/pexels-victor-freitas-703016.jpg"} alt="image" />
         </div>
         <button>Login</button>
       </section>
