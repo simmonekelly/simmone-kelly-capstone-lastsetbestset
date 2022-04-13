@@ -104,7 +104,7 @@ export default class LogNewWorkout extends Component {
     console.log("rendered");
     //console.log(this.state.exerciseList);
     return !this.state.exerciseList ? null : (
-      <div className="d-flex flex-column py-2 lognew" style={{ height: "100vh" }}>
+      <section className="d-flex flex-column py-2" style={{ height: "100vh" }}>
         <h1>Log New Workout</h1>
         <form>
             <input
@@ -124,7 +124,7 @@ export default class LogNewWorkout extends Component {
 
         <button>Save Workout</button>
         
-      </div>
+      </section>
     );
   }
 }

@@ -1,11 +1,22 @@
-.lognew {
+section {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.App {
+.home_content-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  div {
+    width: 50%;
+  }
+}
+
+.app {
   text-align: center;
+  padding: 0 36px;
 }
 
 .App-logo {
