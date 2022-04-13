@@ -1,7 +1,7 @@
 import React from 'react'
 
 function SetLog(props) {
-    const {increaseSetCounter, setNumber} = props
+    const {increaseSetCounter, setNumber, decreaseSetCounter} = props
     return (
           <tr>
             <td>
@@ -15,6 +15,7 @@ function SetLog(props) {
             </td>
             <td>
               <button onClick={(e) => increaseSetCounter(e)}> + </button>
+              <button onClick={(e) => decreaseSetCounter(e)}> - </button>
             </td>
           </tr>
     )

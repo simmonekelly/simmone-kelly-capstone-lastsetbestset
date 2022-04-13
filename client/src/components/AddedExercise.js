@@ -15,6 +15,17 @@ export default class AddedExercise extends Component {
       numberOfSets: newArray,
     });
   };
+
+  decreaseSetCounter = (e) => {
+    e.preventDefault();
+    const newArray = this.state.numberOfSets;
+    console.log(newArray.length);
+    newArray.pop();
+    this.setState({
+      numberOfSets: newArray,
+    });
+  }
+
   componentDidMount() {
     console.log("set log mounted");
   }
@@ -45,6 +56,7 @@ export default class AddedExercise extends Component {
                 setNumber={number}
                 key={"set" + index}
                 increaseSetCounter={this.increaseSetCounter}
+                decreaseSetCounter={this.decreaseSetCounter}
               />
             ))}
           </table>
