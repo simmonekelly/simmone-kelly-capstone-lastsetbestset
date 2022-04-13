@@ -78,7 +78,7 @@ export default class LogNewWorkout extends Component {
     }
     }
   }
-  
+
 
   //handles search bar input change
   handleSearchInputChange = (text) => { 
@@ -121,6 +121,8 @@ export default class LogNewWorkout extends Component {
         {this.state.addedExercises.map((addedExercise =>
             <AddedExercise addedExercise={addedExercise} key={addedExercise.id} />
         ))}
+
+        <button>Save Workout</button>
         
       </div>
     );
