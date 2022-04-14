@@ -14,11 +14,9 @@ router.post('/login', (req, res) => {
     console.log(req.body)
     const { username, password} = req.body;
     const user = users[username];
-
-    // if(err) throw err;
         console.log(users)
         console.log(user)
-        if (user) {
+        if (user && user.password === password) {
             console.log("user found")
             res.json("user found")
         } else {
@@ -26,30 +24,19 @@ router.post('/login', (req, res) => {
             res.status(403).send({message: "user not found"})
         }
 
-    // fs.readFile('./data/testdata.json', 'utf8', (err, data) => {
-    //     if(err) throw err;
-    //     const users = JSON.parse(data);
-    //     console.log(users)
-    //     console.log(users.username)
-    //     if (users.username === username) {
-    //         console.log("user found")
-    //         res.json("user found")
-    //     } else {
-    //         console.log("user not found")
-    //         res.status(403).send({message: "user not found"})
-    //     }
-    // })
-    //res.json("recieved request")
+    
 })
 
-// //reads all history data
-// router.get('/', (_,res) => {
-//     fs.readFile('./data/testdata.json', 'utf8', (err, data) => {
-//         if(err) throw err;
-//         const history = JSON.parse(data);
-//         res.json(history)
-//     })
-// })
+router.post('/signup', (req, res) => {
+    const { username, name, password } = req.body;
+    users[username] = {
+      name,
+      password, // NOTE: Passwords should NEVER be stored in the clear like this. Use a
+      // library like bcrypt to Hash the password. For demo purposes only.
+    };
+    console.log(users)
+    res.json({ success: 'true' });
+  });
 
 
 module.exports = router;
