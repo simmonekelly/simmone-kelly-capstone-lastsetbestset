@@ -38,5 +38,10 @@ router.post('/signup', (req, res) => {
     res.json({ success: 'true' });
   });
 
+  router.get('/logout', (req,res) => {
+      //add logout method
+      //redirect user to app
+  })
+
 
 module.exports = router;
