@@ -3,6 +3,7 @@ const app = express();
 const workoutHistoryRoutes = require('./routes/workouthistory');
 const cors = require('cors');
 const authRoutes = require("./routes/authroutes");
+const knex = require('knex')(require('./knexfile.js').development);
 
 require('dotenv').config();
 const { PORT, REACT_APP_BACKEND_URL } = process.env;
