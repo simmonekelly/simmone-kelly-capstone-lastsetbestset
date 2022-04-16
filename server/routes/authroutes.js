@@ -1,6 +1,8 @@
 const express = require("express");
 const fs = require("fs");
 const router = express.Router();
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 const users = {
   testu: {
@@ -18,10 +20,16 @@ router.post("/login", (req, res) => {
   console.log(user);
   if (user && user.password === password) {
     console.log("user found");
-    res.json("user found");
+    //res.json("user found");
+
+    const token = jwt.sign({
+        name:user.name,
+        username: username,
+    }, process.env.JWT_SECRET);
+    res.json({ token })
   } else {
     console.log("user not found");
-    res.status(403).send({ message: "user not found" });
+    res.status(403).send({ message: "invalid" });
   }
 });
 

@@ -10,13 +10,18 @@ export default class Dashboard extends Component {
 
   componentDidMount() {
     console.log("dashboard mounted");
+    const token = sessionStorage.getItem('token')
+    console.log(token)
     axios
-      .get("http://localhost:8080/history")
+      .get("http://localhost:8080/history", {
+        headers: { Authorization: `Bearer ${token}`}
+      })
       .then((res) => {
         console.log(res);
-        console.log(res.data[0].workouts);
+        console.log(res.data.history[0].workouts);
         this.setState({
-          workoutHistory: res.data[0].workouts,
+          isLoading: false,
+          workoutHistory: res.data.history[0].workouts,
         });
       })
       .catch((err) => {
@@ -29,6 +34,7 @@ export default class Dashboard extends Component {
   }
 
   render() {
+    console.log(` isLoading: ${this.state.isLoading}`)
     if (this.state.workoutHistory.length === 0) {
       return <h1>No History</h1>;
     }

@@ -16,6 +16,16 @@ export default class Login extends Component {
     errorMessage: "",
   };
 
+  componentDidMount() {
+      console.log("sign up mounted");
+      if (this.props.isSignedUp) {
+          this.setState({
+              isSignedUp: this.props.isSignedUp
+          })
+      }
+  }
+
+
   handleLogin = (e) => {
     e.preventDefault();
     console.log("login submitted");
@@ -27,7 +37,7 @@ export default class Login extends Component {
       })
       .then((response) => {
         console.log(response);
-        //sessionStorage.setItem("token", response.data.token);
+        sessionStorage.setItem("token", response.data.token);
         window.location.replace("/myprofile");
       })
       .catch((err) => {
@@ -57,7 +67,7 @@ export default class Login extends Component {
 
   render() {
     const { isLoggedIn, isSignedUp } = this.state;
-
+    console.log(`props: ${this.props.isSignedUp}`)
     console.log(`is signed up: ${isSignedUp}`);
     console.log(`is logged in: ${isLoggedIn}`);
     

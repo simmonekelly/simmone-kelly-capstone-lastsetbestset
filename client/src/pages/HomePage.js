@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom"
 
 export default class HomePage extends Component {
   state = {
@@ -55,7 +56,12 @@ export default class HomePage extends Component {
               Quisque dapibus libero id rhoncus placerat. Integer hendrerit
               dolor neque. Maecenas eget leo in metus tempor tempus.
         </p>
+        <Link to="/login">
         <button>Login</button>
+        </Link>
+        <Link to="/signup">
+        <button>Sign Up</button>
+        </Link>
       </section>
     );
   }

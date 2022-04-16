@@ -13,7 +13,10 @@ function App() {
         <Header />
         <Switch>
           <Route path="/" exact component={HomePage} />
-          <Route path="/login" component={Login} />
+          <Route path="/login">
+            <Login isSignedUp="true" />
+          </Route>
+          <Route path="/signup" component={Login} />
           <Route path="/myprofile" component={Dashboard} />
           <Route path="/log-new-workout" component={LogNewWorkout} />
         </Switch>

@@ -4,7 +4,7 @@ function LoginComponent(props) {
   const { handleLogin } = props;
   return (
     <div>
-      <h1>Sign In Below</h1>
+      <h1>Log In Below</h1>
       <form onSubmit={handleLogin}>
         <div className="">
           Username: <input type="text" name="username" />
@@ -14,7 +14,7 @@ function LoginComponent(props) {
           <input type="password" name="password" autoComplete="true" />
         </div>
         <button className="" type="submit">
-          Sign In
+          Log In
         </button>
       </form>
     </div>
