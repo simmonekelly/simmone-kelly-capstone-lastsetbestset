@@ -1,8 +1,39 @@
-.exercise-sets{
-    display: flex;
-    flex-direction: row;
-}
+@use '../../styles/partials/colorsfonts' as *;
 
-.exercise-headers{
-    @extend .exercise-sets;
+.workoutlog {
+    background-color: $white;
+    height: 100vh;
+    padding-top: 16px;
+
+    &_exercise {
+
+        &-sets{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            padding-bottom: 16px;
+
+            input {
+                width: 50px;
+            }
+            p {
+                padding: 0;
+            }
+        }
+
+        &-headers{
+            @extend .workoutlog_exercise-sets;
+        }
+
+        &-container{
+            background-color: $lightgrey;
+            padding: 16px;
+        }
+
+        &-search{
+            padding-bottom: 16px;
+        }
+
+    }
 }

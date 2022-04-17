@@ -40,18 +40,17 @@ export default class AddedExercise extends Component {
     console.log(this.props);
     const { addedExercise } = this.props;
     return (
-      <div>
+      <div className="workoutlog_exercise">
         <input type="hidden" id="exerciseId" value={addedExercise.id}></input>
         <h3>{addedExercise.name}</h3>
-        <p>Previous Date:</p>
-        <p>3x10lb</p>
-          <div className="exercise-headers">
+        {/* <p>Previous Date:</p>
+        <p>3x10lb</p> */}
+          <div className="workoutlog_exercise-headers">
             <p>Sets</p>
             <p>Reps</p>
             <p>Weight</p>
             <p>+/- Sets</p>
           </div>
-          <table>
             {this.state.numberOfSets.map((number, index) => (
               <SetLog
                 setNumber={number}
@@ -60,7 +59,6 @@ export default class AddedExercise extends Component {
                 decreaseSetCounter={this.decreaseSetCounter}
               />
             ))}
-          </table>
       </div>
     );
   }

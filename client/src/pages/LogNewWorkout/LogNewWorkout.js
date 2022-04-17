@@ -94,9 +94,9 @@ export default class LogNewWorkout extends Component {
     console.log("rendered");
     console.log(this.state.searchResults);
     return !this.state.exerciseList ? null : (
-      <section className="d-flex flex-column py-2" style={{ height: "100vh" }}>
+      <section className="workoutlog">
         <h1>Log New Workout</h1>
-        <form>
+        <form className="workoutlog_exercise-search">
           <input
             type="text"
             placeholder="Search Exercise"
@@ -113,7 +113,7 @@ export default class LogNewWorkout extends Component {
         ))}
         <h3>Added Exercises</h3>
         <p>Date Completed: {new Date().toLocaleString()}</p>
-        <form id="workout" onSubmit={(e) => this.saveWorkout(e)}>
+        <form id="workout" className="workoutlog_exercise-container" onSubmit={(e) => this.saveWorkout(e)}>
           {this.state.addedExercises.map((addedExercise) => (
             <AddedExercise
               addedExercise={addedExercise}
