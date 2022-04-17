@@ -11,8 +11,18 @@
 
         &-container {
             display: flex;
+            flex-direction: column;
+            max-width: 100%;
+
+            @include desktoptablet{
             flex-direction: row;
             width: 100%;
+            }
         }
+    }
+
+    //possibly remove
+    &_exercise {
+        padding: 10px 0;
     }
 }

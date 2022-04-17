@@ -3,3 +3,11 @@ $lightgrey: #D9D9D9;
 $darkgrey: #353535;
 $teal: #3C6E71;
 $white: #FFFFFF;
+
+$desktoptablet-breakpoint: 768px;
+
+@mixin desktoptablet {
+    @media (min-width: $desktoptablet-breakpoint) {
+        @content;
+    }
+}

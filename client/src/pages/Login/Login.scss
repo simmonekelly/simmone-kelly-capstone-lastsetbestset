@@ -4,7 +4,13 @@
   background-image: url("http://localhost:8080/images/pexels-victor-freitas-703016.jpg");
   background-size: cover;
   height: 100vh;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: 20px;
+
+  @include desktoptablet {
+    justify-content: center;
+    padding-top: 0;
+  }
 }
 
 .login-container {
