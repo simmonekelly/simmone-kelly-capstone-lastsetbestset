@@ -8,6 +8,9 @@ section {
 .header {
   flex-direction: row;
   justify-content: space-between;
+  background-color: black;
+  color: white;
+  height: 80px;
 
   &_nav {
     display: flex;
@@ -17,6 +20,8 @@ section {
 
     a {
       padding: 0 16px;
+      color: white;
+      text-decoration: none;
     }
   }
 }

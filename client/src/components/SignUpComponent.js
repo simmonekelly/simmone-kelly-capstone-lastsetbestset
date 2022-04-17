@@ -3,17 +3,19 @@ import React from "react";
 function SignUpComponent(props) {
   const { handleSignup } = props;
   return (
-    <div>
+    <div className="login-container">
       <h1>Sign Up Below</h1>
       <form onSubmit={handleSignup}>
-        <div className="">
-          Username: <input type="text" name="username" />
+        <div className="form-group">
+        <p>Username:</p>
+        <input type="text" name="username" />
         </div>
-        <div className="">
-          Name: <input type="text" name="name" />
+        <div className="form-group">
+          <p>Name:</p>
+          <input type="text" name="name" />
         </div>
-        <div className="">
-          Password:{" "}
+        <div className="form-group">
+          <p>Password:{" "}</p>
           <input type="password" name="password" autoComplete="true" />
         </div>
         <button className="" type="submit">

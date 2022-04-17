@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-//import Profile from './pages/Profile';
+import "../Login/Login.scss";
 import axios from "axios";
 import SignUpComponent from "../../components/SignUpComponent";
 import LoginComponent from "../../components/LoginComponent";
@@ -71,9 +71,13 @@ export default class Login extends Component {
     console.log(`is logged in: ${isLoggedIn}`);
     
     return !isSignedUp ? (
-      <SignUpComponent handleSignup={this.handleSignup} />
+      <section className="logsignin">
+        <SignUpComponent handleSignup={this.handleSignup} />
+      </section>
     ) : (
-      <LoginComponent handleLogin={this.handleLogin} />
+      <section className="logsignin">
+        <LoginComponent handleLogin={this.handleLogin} />
+      </section>
     );
   }
 }
