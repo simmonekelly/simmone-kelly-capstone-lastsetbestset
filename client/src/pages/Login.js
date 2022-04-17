@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import SignUpComponent from "../components/SignUpComponent";
 import LoginComponent from "../components/LoginComponent";
-import Dashboard from "../pages/Dashboard";
 const baseUrl = "http://localhost:8080";
 const loginUrl = `${baseUrl}/auth/login`;
 const signupUrl = `${baseUrl}/auth/signup`;

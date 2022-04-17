@@ -1,0 +1,8 @@
+.exercise-sets{
+    display: flex;
+    flex-direction: row;
+}
+
+.exercise-headers{
+    @extend .exercise-sets;
+}

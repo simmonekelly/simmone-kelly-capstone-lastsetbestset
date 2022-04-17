@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import SetLog from "./SetLog";
 
@@ -40,17 +41,17 @@ export default class AddedExercise extends Component {
     const { addedExercise } = this.props;
     return (
       <div>
+        <input type="hidden" id="exerciseId" value={addedExercise.id}></input>
         <h3>{addedExercise.name}</h3>
         <p>Previous Date:</p>
         <p>3x10lb</p>
-        <form>
+          <div className="exercise-headers">
+            <p>Sets</p>
+            <p>Reps</p>
+            <p>Weight</p>
+            <p>+/- Sets</p>
+          </div>
           <table>
-            <tr>
-              <th>Set</th>
-              <th>Reps</th>
-              <th>Weight</th>
-              <th>+/- Sets</th>
-            </tr>
             {this.state.numberOfSets.map((number, index) => (
               <SetLog
                 setNumber={number}
@@ -60,7 +61,6 @@ export default class AddedExercise extends Component {
               />
             ))}
           </table>
-        </form>
       </div>
     );
   }
