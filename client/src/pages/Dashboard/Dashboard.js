@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
+import "../Dashboard/Dashboard.scss";
 
 export default class Dashboard extends Component {
   state = {
@@ -10,11 +11,11 @@ export default class Dashboard extends Component {
 
   componentDidMount() {
     console.log("dashboard mounted");
-    const token = sessionStorage.getItem('token')
-    console.log(token)
+    const token = sessionStorage.getItem("token");
+    console.log(token);
     axios
       .get("http://localhost:8080/history", {
-        headers: { Authorization: `Bearer ${token}`}
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
         console.log(res);
@@ -34,30 +35,31 @@ export default class Dashboard extends Component {
   }
 
   render() {
-    console.log(` isLoading: ${this.state.isLoading}`)
+    console.log(` isLoading: ${this.state.isLoading}`);
     if (this.state.workoutHistory.length === 0) {
       return <h1>No History</h1>;
     }
     return (
-      <section>
-        <h1>Dashboard</h1>
-        {this.state.workoutHistory.map((workout) => (
-          <table key={workout.id}>
-            <thead>
-              <tr>
-                <th colSpan="3">Completed On: {workout.date}</th>
-              </tr>
-            </thead>
-            {workout.exercises.map((exercise) => (
-              <tbody key={exercise.exerciseId}>
+      <section className="myprofile">
+        <h1>My Profile</h1>
+        <div className="myprofile_workout-container">
+          {this.state.workoutHistory.map((workout) => (
+            <table key={workout.id} className="myprofile_workout">
+              <thead>
                 <tr>
-                  <th colSpan="3">{exercise.exerciseName}</th>
+                  <th colSpan="3">Completed On: {workout.date}</th>
                 </tr>
-                <tr>
+              </thead>
+              {workout.exercises.map((exercise) => (
+                <tbody key={exercise.exerciseId}>
+                  <tr>
+                    <th colSpan="3">{exercise.exerciseName}</th>
+                  </tr>
+                  <tr>
                     <td>Set</td>
                     <td>Reps</td>
                     <td>Weight</td>
-                </tr>
+                  </tr>
                   {exercise.sets.map((set) => (
                     <tr key={set.setNumber}>
                       <td>{`Set ${set.setNumber}`}</td>
@@ -65,11 +67,12 @@ export default class Dashboard extends Component {
                       <td>{set.weight}</td>
                     </tr>
                   ))}
-              </tbody>
-            ))}
-            ;
-          </table>
-        ))}
+                </tbody>
+              ))}
+              
+            </table>
+          ))}
+        </div>
       </section>
     );
   }

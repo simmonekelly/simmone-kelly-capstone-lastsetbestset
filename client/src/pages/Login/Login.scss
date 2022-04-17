@@ -1,3 +1,5 @@
+@use '../../styles/partials/colorsfonts' as *;
+
 .logsignin {
   background-image: url("http://localhost:8080/images/pexels-victor-freitas-703016.jpg");
   background-size: cover;
@@ -28,10 +30,10 @@
     }
 
     button {
-        background-color: black;
+        background-color: $darkblue;
         border-radius: 4px;
         border: none;
-        color: white;
+        color: $white;
         padding: 5px 10px;
       }
 }

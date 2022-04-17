@@ -1,3 +1,5 @@
+@use './styles/partials/colorsfonts' as *;
+
 section {
   display: flex;
   flex-direction: column;
@@ -8,8 +10,8 @@ section {
 .header {
   flex-direction: row;
   justify-content: space-between;
-  background-color: black;
-  color: white;
+  background-color: $darkblue;
+  color: $white;
   height: 80px;
 
   &_nav {
@@ -20,9 +22,14 @@ section {
 
     a {
       padding: 0 16px;
-      color: white;
+      color: $white;
       text-decoration: none;
     }
+  }
+
+  &_logo {
+    max-width: 75px;
+    max-height: 75px;
   }
 }
 

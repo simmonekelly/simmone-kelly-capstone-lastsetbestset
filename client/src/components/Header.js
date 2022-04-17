@@ -5,7 +5,7 @@ function Header() {
   return (
     <section className="header">
       <Link to="/">
-        <img alt="logo" src="" />
+        <img alt="logo" className="header_logo" src="http://localhost:8080/images/lsbs-logo.png" />
       </Link>
       <div className="header_nav-container">
         <ul className="header_nav">
