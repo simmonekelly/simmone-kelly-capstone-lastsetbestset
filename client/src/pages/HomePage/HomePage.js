@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import "../HomePage/HomePage.scss";
 
 export default class HomePage extends Component {
   state = {
@@ -19,9 +20,9 @@ export default class HomePage extends Component {
 
   render() {
     return (
-      <section>
+      <section className="home">
         <div className="home_content-container">
-          <div>
+          <div className="home_content">
             <h1>Last Set Best Set</h1>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec
@@ -38,10 +39,18 @@ export default class HomePage extends Component {
               Quisque dapibus libero id rhoncus placerat. Integer hendrerit
               dolor neque. Maecenas eget leo in metus tempor tempus.
             </p>
+            <div className="home_buttons-container">
+              <Link to="/login">
+                <button>Login</button>
+              </Link>
+              <Link to="/signup">
+                <button>Sign Up</button>
+              </Link>
+            </div>
           </div>
-          <img  className="home_hero-image" src={"http://localhost:8080/images/pexels-victor-freitas-703016.jpg"} alt="image" />
+          {/* <img  className="home_hero-image" src={"http://localhost:8080/images/pexels-victor-freitas-703016.jpg"} alt="image" /> */}
         </div>
-        <p>
+        {/* <p> MOVE TO AN ABOUT US PAGE
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec
               ultricies dolor, vitae congue nulla. Morbi felis augue, aliquet ac
               enim sed, sodales mollis mauris. Proin posuere porta ornare.
@@ -55,13 +64,7 @@ export default class HomePage extends Component {
               primis in faucibus orci luctus et ultrices posuere cubilia curae;
               Quisque dapibus libero id rhoncus placerat. Integer hendrerit
               dolor neque. Maecenas eget leo in metus tempor tempus.
-        </p>
-        <Link to="/login">
-        <button>Login</button>
-        </Link>
-        <Link to="/signup">
-        <button>Sign Up</button>
-        </Link>
+        </p> */}
       </section>
     );
   }

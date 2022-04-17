@@ -1,10 +1,10 @@
 import "./App.scss";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/HomePage/HomePage";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import LogNewWorkout from "./pages/LogNewWorkout";
+import LogNewWorkout from "./pages/LogNewWorkout/LogNewWorkout";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Header from "./components/Header";
-import Login from "./pages/Login";
+import Login from "./pages/Login/Login";
 
 function App() {
   return (

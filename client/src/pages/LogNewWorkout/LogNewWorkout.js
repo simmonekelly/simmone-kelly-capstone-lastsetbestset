@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-import ExerciseList from "../components/ExerciseList";
-import ExerciseSearchResults from "../components/ExerciseSearchResults";
-import AddedExercise from "../components/AddedExercise";
+import ExerciseList from "../../components/ExerciseList";
+import ExerciseSearchResults from "../../components/ExerciseSearchResults";
+import AddedExercise from "../../components/AddedExercise";
 import './LogNewWorkout.scss'
 
 const BASE_URL = "https://wger.de/api/v2";

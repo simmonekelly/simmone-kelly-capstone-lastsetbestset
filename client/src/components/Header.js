@@ -7,8 +7,8 @@ function Header() {
       <Link to="/myprofile">
         <img alt="logo" src="" />
       </Link>
-      <div>
-        <ul>
+      <div className="header_nav-container">
+        <ul className="header_nav">
           <Link to="/myprofile">
             <li>Dashboard</li>
           </Link>
