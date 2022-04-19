@@ -1,16 +1,61 @@
-.lognew {
+@use './styles/partials/colorsfonts' as *;
+
+section {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 16px;
 }
 
-.App {
+.header {
+  flex-direction: column;
+  background-color: $darkblue;
+  color: $white;
+  height: 150px;
+
+  @include desktoptablet {
+    flex-direction: row;
+    justify-content: space-between;
+    height: 80px;
+  }
+
+  &_nav {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding-inline-start: 0;
+
+    a {
+      padding: 0 16px;
+      color: $white;
+      text-decoration: none;
+    }
+  }
+
+  &_logo {
+    max-width: 75px;
+    max-height: 75px;
+  }
+}
+
+h1 {
+  margin: 0;
+  padding-bottom: 16px;
+}
+
+h3 {
+  margin: 0;
+  padding-bottom: 16px;
+}
+
+p {
+  margin: 0;
+  padding-bottom: 16px;
+}
+
+.app {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  //padding: 0 16px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

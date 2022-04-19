@@ -1,23 +1,16 @@
-import React from 'react'
+import React from 'react';
+import { FaPlus, FaMinus } from "react-icons/fa";
 
 function SetLog(props) {
     const {increaseSetCounter, setNumber, decreaseSetCounter} = props
     return (
-          <tr>
-            <td>
+          <div className="workoutlog_exercise-sets">
               <p> {setNumber} </p>
-            </td>
-            <td>
-              <input type="text" placeholder="suggested reps"></input>
-            </td>
-            <td>
-              <input type="text" placeholder="suggested weight"></input>
-            </td>
-            <td>
-              <button onClick={(e) => increaseSetCounter(e)}> + </button>
-              <button onClick={(e) => decreaseSetCounter(e)}> - </button>
-            </td>
-          </tr>
+              <input type="text" form="workout" id={`set-${setNumber}-reps`} placeholder="0"></input>
+              <input type="text"  form="workout" id={`set-${setNumber}-weight`}  placeholder="0"></input>
+              <FaPlus onClick={(e) => increaseSetCounter(e)} />
+              <FaMinus onClick={(e) => decreaseSetCounter(e)} />
+          </div>
     )
 }
 
