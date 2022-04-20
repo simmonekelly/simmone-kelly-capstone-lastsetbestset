@@ -1,56 +1,55 @@
 [
-    {
-        "username": "testu",
-        "workouts": [
-            {
-                "id": 1,
-                "date": "4/10/21",
-                "exercises": [
-                    {
-                        "exerciseId": 1,
-                        "exerciseName": "squats",
-                        "sets": [
-                            {
-                                "setNumber": 1,
-                                "reps": 10,
-                                "weight": 135
-                            },
-                            {
-                                "setNumber": 2,
-                                "reps": 10,
-                                "weight": 135
-                            },
-                            {
-                                "setNumber": 3,
-                                "reps": 10,
-                                "weight": 135
-                            }
-                        ]
-                    },
-                    {
-                        "exerciseId": 2,
-                        "exerciseName": "lunges",
-                        "sets": [
-                            {
-                                "setNumber": 1,
-                                "reps": 10,
-                                "weight": 10
-                            },
-                            {
-                                "setNumber": 2,
-                                "reps": 10,
-                                "weight": 10
-                            },
-                            {
-                                "setNumber": 3,
-                                "reps": 10,
-                                "weight": 10
-                            }
-                        ]
-                    }
-                ]
-            }
+  {
+    "username": "testu",
+    "workouts": [
+      {
+        "id": 1,
+        "date": "4/10/21",
+        "exercises": [
+          {
+            "id": 1,
+            "name": "squats",
+            "sets": [
+              { "setNumber": 1, "reps": 10, "weight": 135 },
+              { "setNumber": 2, "reps": 10, "weight": 135 },
+              { "setNumber": 3, "reps": 10, "weight": 135 }
+            ]
+          },
+          {
+            "id": 2,
+            "name": "lunges",
+            "sets": [
+              { "setNumber": 1, "reps": 10, "weight": 10 },
+              { "setNumber": 2, "reps": 10, "weight": 10 },
+              { "setNumber": 3, "reps": 10, "weight": 10 }
+            ]
+          }
         ]
-    }
-  ]
-  
+      },
+      {
+        "id": 2,
+        "date": "4/20/21",
+        "exercises": [
+          {
+            "bodyPart": "upper legs",
+            "equipment": "band",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0987.gif",
+            "id": "0987",
+            "name": "band one arm single leg split squat",
+            "target": "quads",
+            "sets": [{ "reps": "8", "setNumber": 1, "weight": "10" }]
+          },
+          {
+            "bodyPart": "upper legs",
+            "equipment": "barbell",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1410.gif",
+            "id": "1410",
+            "name": "barbell lateral lunge",
+            "target": "glutes",
+            "sets": [{ "reps": "10", "setNumber": 1, "weight": "12" }]
+          }
+        ]
+      }
+    ]
+  }
+]

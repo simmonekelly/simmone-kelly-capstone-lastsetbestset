@@ -87,9 +87,14 @@ export default class LogNewWorkout extends Component {
   saveWorkout = (e) => {
     e.preventDefault(); //remove later
     console.log("saved workout");
-    console.log(e);
-      console.log(`target name: ${e.target.name}`)
-      console.log(`target value: ${e.target.value}`)
+    console.log(this.state.addedExercises)
+    axios.post('http://localhost:8080/history', {
+      exercises: this.state.addedExercises
+    }).then(date => {
+      console.log('pushed to back end')
+    }).catch(err => {
+      console.log(err)
+    })
   };
 
   //handles set change 
@@ -109,18 +114,18 @@ export default class LogNewWorkout extends Component {
       if(exercise.id === id) {
         if(!exercise.sets){
           let newSet = []
-          newSet.push({reps:e.target.value, snum:set})
+          newSet.push({reps:e.target.value, setNumber:set})
           exercise.sets = newSet
         } else {
           console.log("all sets:")
           console.log(exercise.sets)
           console.log(`set: ${set}`)
-          if(exercise.sets.find(sets => sets.snum === set)) {
+          if(exercise.sets.find(sets => sets.setNumber === set)) {
             console.log('found set')
-            console.log(`snum: ${exercise.sets[set - 1].snum}`)
+            console.log(`setNumber: ${exercise.sets[set - 1].setNumber}`)
             exercise.sets[set -1].reps = e.target.value
           } else {
-            exercise.sets.push({reps:e.target.value, snum:set})
+            exercise.sets.push({reps:e.target.value, setNumber:set})
           }
         }
         return exercise
@@ -149,18 +154,18 @@ export default class LogNewWorkout extends Component {
       if(exercise.id === id) {
         if(!exercise.sets){
           let newSet = []
-          newSet.push({weight:e.target.value, snum:set})
+          newSet.push({weight:e.target.value, setNumber:set})
           exercise.sets = newSet
         } else {
           console.log("all sets:")
           console.log(exercise.sets)
           console.log(`set: ${set}`)
-          if(exercise.sets.find(sets => sets.snum === set)) {
+          if(exercise.sets.find(sets => sets.setNumber === set)) {
             console.log('found set')
-            console.log(`snum: ${exercise.sets[set - 1].snum}`)
+            console.log(`setNumber: ${exercise.sets[set - 1].setNumber}`)
             exercise.sets[set -1].weight = e.target.value
           } else {
-            exercise.sets.push({weight:e.target.value, snum:set})
+            exercise.sets.push({weight:e.target.value, setNumber:set})
           }
         }
         return exercise
