@@ -46,14 +46,14 @@ export default class LogNewWorkout extends Component {
       console.log("no search");
       return;
     } else {
-      console.log(`previous state: ${prevState.search}`);
-      console.log(`current state ${this.state.search}`);
+      //console.log(`previous state: ${prevState.search}`);
+      //console.log(`current state ${this.state.search}`);
       if (this.state.search === prevState.search) {
         console.log("matches");
       } else {
         console.log("running search");
         const PATTERN = this.state.search;
-        console.log(PATTERN)
+        //console.log(PATTERN)
         this.setState({
           searchResults: this.state.exerciseList.filter(exercise => exercise.name.includes(PATTERN))
         })
@@ -63,7 +63,7 @@ export default class LogNewWorkout extends Component {
 
   //handles search bar input change
   handleSearchInputChange = (text) => {
-    console.log(text);
+    //console.log(text);
     this.setState({
       search: text,
     });
@@ -88,11 +88,99 @@ export default class LogNewWorkout extends Component {
     e.preventDefault(); //remove later
     console.log("saved workout");
     console.log(e);
+      console.log(`target name: ${e.target.name}`)
+      console.log(`target value: ${e.target.value}`)
   };
+
+  //handles set change 
+  //set state to capture the value changes
+  //pass state to server
+  handleRepChange = (id, set, e) => {
+    // console.log(`exercise: ${id}`)
+    // console.log(`set: ${set}`)
+    // console.log(`reps: ${e.target.value}`)
+    //console.log(e)
+    //console.log(e.target.value)
+
+    //find id
+    //add unique identifier to set
+    let workingExercise2 = [...this.state.addedExercises].map((exercise) => {
+      console.log(exercise)
+      if(exercise.id === id) {
+        if(!exercise.sets){
+          let newSet = []
+          newSet.push({reps:e.target.value, snum:set})
+          exercise.sets = newSet
+        } else {
+          console.log("all sets:")
+          console.log(exercise.sets)
+          console.log(`set: ${set}`)
+          if(exercise.sets.find(sets => sets.snum === set)) {
+            console.log('found set')
+            console.log(`snum: ${exercise.sets[set - 1].snum}`)
+            exercise.sets[set -1].reps = e.target.value
+          } else {
+            exercise.sets.push({reps:e.target.value, snum:set})
+          }
+        }
+        return exercise
+      }
+      return exercise
+    }
+    );
+    
+    console.log(workingExercise2)
+    this.setState({
+      addedExercises: workingExercise2
+    })
+  }
+
+  handleWeightChange = (id, set, e) => {
+    console.log(`exercise: ${id}`)
+    console.log(`set: ${set}`)
+    console.log(`weight: ${e.target.value}`)
+    //console.log(e)
+    //console.log(e.target.value)
+
+    //find id
+    //add unique identifier to set
+    let workingExercise2 = [...this.state.addedExercises].map((exercise) => {
+      console.log(exercise)
+      if(exercise.id === id) {
+        if(!exercise.sets){
+          let newSet = []
+          newSet.push({weight:e.target.value, snum:set})
+          exercise.sets = newSet
+        } else {
+          console.log("all sets:")
+          console.log(exercise.sets)
+          console.log(`set: ${set}`)
+          if(exercise.sets.find(sets => sets.snum === set)) {
+            console.log('found set')
+            console.log(`snum: ${exercise.sets[set - 1].snum}`)
+            exercise.sets[set -1].weight = e.target.value
+          } else {
+            exercise.sets.push({weight:e.target.value, snum:set})
+          }
+        }
+        return exercise
+      }
+      return exercise
+    }
+    );
+    
+    console.log(workingExercise2)
+    this.setState({
+      addedExercises: workingExercise2
+    })
+   
+  }
+
 
   render() {
     console.log("rendered");
-    console.log(this.state.searchResults);
+    // console.log(this.state.searchResults);
+    console.log(this.state.addedExercises)
     return !this.state.exerciseList ? null : (
       <section className="workoutlog">
         <h1>Log New Workout</h1>
@@ -118,6 +206,8 @@ export default class LogNewWorkout extends Component {
             <AddedExercise
               addedExercise={addedExercise}
               key={addedExercise.id}
+              handleRepChange={this.handleRepChange}
+              handleWeightChange={this.handleWeightChange}
             />
           ))}
           <button
