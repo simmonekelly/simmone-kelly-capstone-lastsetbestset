@@ -38,7 +38,7 @@ export default class AddedExercise extends Component {
   render() {
     console.log(this.state.numberOfSets);
     console.log(this.props);
-    const { addedExercise } = this.props;
+    const { addedExercise, handleRepChange, handleWeightChange } = this.props;
     return (
       <div className="workoutlog_exercise">
         <input type="hidden" id="exerciseId" value={addedExercise.id}></input>
@@ -57,6 +57,9 @@ export default class AddedExercise extends Component {
                 key={"set" + index}
                 increaseSetCounter={this.increaseSetCounter}
                 decreaseSetCounter={this.decreaseSetCounter}
+                handleRepChange={handleRepChange}
+                handleWeightChange={handleWeightChange}
+                exerciseid={addedExercise.id}
               />
             ))}
       </div>

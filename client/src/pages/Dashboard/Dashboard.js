@@ -51,9 +51,9 @@ export default class Dashboard extends Component {
                 </tr>
               </thead>
               {workout.exercises.map((exercise) => (
-                <tbody key={exercise.exerciseId} className="myprofile_exercise">
+                <tbody key={exercise.id} className="myprofile_exercise">
                   <tr>
-                    <th colSpan="3">{exercise.exerciseName}</th>
+                    <th colSpan="3">{exercise.name}</th>
                   </tr>
                   <tr>
                     <td>Set</td>
