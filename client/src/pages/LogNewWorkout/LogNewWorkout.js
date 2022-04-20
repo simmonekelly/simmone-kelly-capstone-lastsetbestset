@@ -90,8 +90,11 @@ export default class LogNewWorkout extends Component {
     console.log(this.state.addedExercises)
     axios.post('http://localhost:8080/history', {
       exercises: this.state.addedExercises
-    }).then(date => {
+    }).then(data => {
       console.log('pushed to back end')
+      console.log(data)
+      window.alert(data.data.message)
+      window.location.replace("/myprofile");
     }).catch(err => {
       console.log(err)
     })

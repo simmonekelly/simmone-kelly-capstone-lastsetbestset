@@ -50,7 +50,7 @@ router.post('/', (req, res) => {
       const currentUserIndex = history.findIndex(user => user.username === "testu")
 
       const addedExercise = {
-        id: 2,
+        id: 2, //change to uuid
         date: "4/20/21",
         exercises: exercises
       }
@@ -66,6 +66,10 @@ router.post('/', (req, res) => {
       fs.writeFile('./data/testdata.json', strNewHistory, (err) => {
         if(err) throw err;
         console.log('new workout saved')
+
+        //add a res.json to push a messge that it saved 
+        //then reroute to dashboard page
+        res.status(200).send({ message: "Workout Saved Successfully!" })
       })
 
     })

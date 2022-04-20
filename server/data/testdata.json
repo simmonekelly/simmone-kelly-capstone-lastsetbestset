@@ -49,6 +49,21 @@
             "sets": [{ "reps": "10", "setNumber": 1, "weight": "12" }]
           }
         ]
+      },
+      {
+        "id": 3,
+        "date": "4/20/21",
+        "exercises": [
+          {
+            "bodyPart": "chest",
+            "equipment": "barbell",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0025.gif",
+            "id": "0025",
+            "name": "barbell bench press",
+            "target": "pectorals",
+            "sets": [{ "reps": "8", "setNumber": 1, "weight": "90" }]
+          }
+        ]
       }
     ]
   }
