@@ -10,7 +10,6 @@ export default class AddedExercise extends Component {
   increaseSetCounter = (e) => {
     e.preventDefault();
     const newArray = this.state.numberOfSets;
-    console.log(newArray.length);
     newArray.push(newArray.length + 1);
     this.setState({
       numberOfSets: newArray,
@@ -20,7 +19,6 @@ export default class AddedExercise extends Component {
   decreaseSetCounter = (e) => {
     e.preventDefault();
     const newArray = this.state.numberOfSets;
-    console.log(newArray.length);
     newArray.pop();
     this.setState({
       numberOfSets: newArray,
@@ -36,16 +34,16 @@ export default class AddedExercise extends Component {
   }
 
   render() {
-    console.log(this.state.numberOfSets);
-    console.log(this.props);
     const { addedExercise, handleRepChange, handleWeightChange } = this.props;
     return (
       <div className="workoutlog_exercise">
-        <input type="hidden" id="exerciseId" value={addedExercise.id}></input>
+        <div className="workoutlog_exercise-headers">
+        <img src={addedExercise.gifUrl} />
         <h3>{addedExercise.name}</h3>
+        </div>
         {/* <p>Previous Date:</p>
         <p>3x10lb</p> */}
-          <div className="workoutlog_exercise-headers">
+          <div className="workoutlog_exercise-rep-headers">
             <p>Sets</p>
             <p>Reps</p>
             <p>Weight</p>

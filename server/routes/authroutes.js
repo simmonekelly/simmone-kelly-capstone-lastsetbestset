@@ -77,6 +77,8 @@ router.post("/signup", (req, res) => {
 router.get("/logout", (req, res) => {
   //add logout method
   //redirect user to app
+
+  
 });
 
 module.exports = router;
