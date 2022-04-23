@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
 import React, { Component } from "react";
+import axios from "axios";
+
+const baseUrl = "http://localhost:8080";
+const logoutUrl = `${baseUrl}/auth/logout`;
 
 export default class Header extends Component {
   state = {
@@ -18,7 +22,7 @@ export default class Header extends Component {
     }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(_, prevState) {
     console.log("header updated");
     const token = sessionStorage.getItem("token");
     console.log(token);
@@ -28,6 +32,17 @@ export default class Header extends Component {
         isLoggedIn: true,
       });
     }
+  }
+
+  handleLogOut = () => {
+    axios.post(logoutUrl, {
+    }).then(response => {
+      console.log(response);
+      sessionStorage.setItem("token", "");
+      this.setState({
+        isLoggedIn: false
+      })
+    }).catch((err) => console.log(err));
   }
 
   render() {
@@ -49,7 +64,7 @@ export default class Header extends Component {
               <li>Start New Workout</li>
             </Link>
             {this.state.isLoggedIn ? (
-            <Link to="/">
+            <Link to="/" onClick = {(e) => this.handleLogOut(e)}>
               <li>Log Out</li>
             </Link>
             ) : (

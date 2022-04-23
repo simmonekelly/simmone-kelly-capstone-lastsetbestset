@@ -105,11 +105,8 @@ router.post("/signup", (req, res) => {
   //         });
 });
 
-router.get("/logout", (req, res) => {
-  //add logout method
-  //redirect user to app
-  // sessionStorage.setItem("token", response.data.token);
-  //       window.location.replace("/myprofile");
+router.post("/logout", (req, res) => {
+  res.status(200).json({ success: "true" });
 });
 
 module.exports = router;

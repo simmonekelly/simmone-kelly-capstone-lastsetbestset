@@ -14,6 +14,7 @@ export default class Dashboard extends Component {
   componentDidMount() {
     console.log("dashboard mounted");
     const token = sessionStorage.getItem("token");
+    console.log(`token: ${token}`)
 
     if (!token) {
       this.setState({
@@ -42,6 +43,7 @@ export default class Dashboard extends Component {
   }
 
   render() {
+    console.log(this.state.isLoggedIn)
     if (!this.state.isLoggedIn) {
       return (
         <section className="myprofile">
