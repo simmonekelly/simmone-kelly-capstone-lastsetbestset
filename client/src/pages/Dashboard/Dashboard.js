@@ -70,22 +70,22 @@ export default class Dashboard extends Component {
               <table key={workout.id} className="myprofile_workout">
                 <thead>
                   <tr>
-                    <th colSpan="3">Completed On: {workout.date}</th>
+                    <th colSpan="3" className="myprofile_workout-header">Completed On: <span className="myprofile_workout-date">{workout.date}</span></th>
                   </tr>
                 </thead>
                 {workout.exercises.map((exercise) => (
                   <tbody key={exercise.id} className="myprofile_exercise">
                     <tr>
-                      <th colSpan="3">{exercise.name}</th>
+                      <th colSpan="3" className="myprofile_exercise-title"> {exercise.name}</th>
                     </tr>
-                    <tr>
+                    <tr className="myprofile_exercise-header">
                       <td>Set</td>
                       <td>Reps</td>
                       <td>Weight</td>
                     </tr>
                     {exercise.sets.map((set) => (
                       <tr key={set.setNumber}>
-                        <td>{`Set ${set.setNumber}`}</td>
+                        <td>{set.setNumber}</td>
                         <td>{set.reps}</td>
                         <td>{set.weight}</td>
                       </tr>

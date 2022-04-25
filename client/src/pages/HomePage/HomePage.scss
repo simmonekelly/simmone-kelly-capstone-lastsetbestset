@@ -6,6 +6,11 @@
   height: 100vh;
   justify-content: flex-start;
   padding-top: 20px;
+
+  h1{
+    font-family: $home-header;
+    font-weight: 400;
+  }
   
 
   @include desktoptablet{

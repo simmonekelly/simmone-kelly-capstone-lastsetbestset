@@ -38,20 +38,44 @@ section {
   }
 }
 
-h1 {
-  margin: 0;
-  padding-bottom: 16px;
-}
+//fonts
 
-h3 {
-  margin: 0;
-  padding-bottom: 16px;
-  //color: $darkgrey;
+body{
+  font-family: $body-font;
 }
 
 p {
   margin: 0;
   padding-bottom: 16px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+button {
+  @extend p;
+}
+
+
+h1 {
+  @extend p;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+h2 {
+  @extend p;
+  font-size: 36px;
+  font-weight: 500;
+}
+
+h3 {
+  @extend p;
+  font-size: 24px;
+}
+
+h4 {
+  @extend p;
+  font-size: 24px;
 }
 
 .app {
