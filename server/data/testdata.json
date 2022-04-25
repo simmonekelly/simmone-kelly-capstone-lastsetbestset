@@ -1,31 +1,10 @@
 [
   {
     "username": "testu",
+    "id": "1",
+    "name": "testn",
+    "password": "testp",
     "workouts": [
-      {
-        "id": 1,
-        "date": "4/10/21",
-        "exercises": [
-          {
-            "id": 1,
-            "name": "squats",
-            "sets": [
-              { "setNumber": 1, "reps": 10, "weight": 135 },
-              { "setNumber": 2, "reps": 10, "weight": 135 },
-              { "setNumber": 3, "reps": 10, "weight": 135 }
-            ]
-          },
-          {
-            "id": 2,
-            "name": "lunges",
-            "sets": [
-              { "setNumber": 1, "reps": 10, "weight": 10 },
-              { "setNumber": 2, "reps": 10, "weight": 10 },
-              { "setNumber": 3, "reps": 10, "weight": 10 }
-            ]
-          }
-        ]
-      },
       {
         "id": 2,
         "date": "4/20/21",
@@ -62,6 +41,112 @@
             "name": "barbell bench press",
             "target": "pectorals",
             "sets": [{ "reps": "8", "setNumber": 1, "weight": "90" }]
+          }
+        ]
+      },
+      {
+        "id": "654f4300-2678-4120-9022-c5709d8a7c85",
+        "date": "4/21/2022",
+        "exercises": [
+          {
+            "bodyPart": "upper legs",
+            "equipment": "barbell",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0024.gif",
+            "id": "0024",
+            "name": "barbell bench front squat",
+            "target": "quads",
+            "sets": [
+              { "reps": "10", "setNumber": 1, "weight": "40" },
+              { "reps": "10", "setNumber": 2, "weight": "40" },
+              { "reps": "12", "setNumber": 3, "weight": "40" }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c9782d62-4b57-45a0-ada8-5de687dc2de1",
+        "date": "4/21/2022",
+        "exercises": [
+          {
+            "bodyPart": "upper legs",
+            "equipment": "barbell",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0078.gif",
+            "id": "0078",
+            "name": "barbell rear lunge",
+            "target": "glutes",
+            "sets": [
+              { "reps": "9", "setNumber": 1, "weight": "20" },
+              { "reps": "10", "setNumber": 2, "weight": "20" }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "username": "simmtest",
+    "id": "c69a1053-431f-4e94-a5b6-eb2b3186399f",
+    "name": "simmone",
+    "password": "testpass",
+    "workouts": []
+  },
+  {
+    "username": "testing2",
+    "id": "bdb9f6d1-aa89-4d47-aa8d-8e9ca7e6ddc3",
+    "name": "simmy",
+    "password": "test2",
+    "workouts": [
+      {
+        "id": "12db9d72-1a6e-473b-b775-a360e95b12cd",
+        "date": "4/21/2022",
+        "exercises": [
+          {
+            "bodyPart": "upper legs",
+            "equipment": "barbell",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0078.gif",
+            "id": "0078",
+            "name": "barbell rear lunge",
+            "target": "glutes",
+            "sets": [{ "reps": "10", "setNumber": 1, "weight": "20" }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "username": "testuser3",
+    "id": "0c82d8a1-e04b-4e4c-88bc-a68e019aa3c1",
+    "name": "simmy3",
+    "password": "testp3",
+    "workouts": [
+      {
+        "id": "cd7773cc-a53f-4bb0-ab52-7e53465a4822",
+        "date": "4/21/2022",
+        "exercises": [
+          {
+            "bodyPart": "upper legs",
+            "equipment": "barbell",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0043.gif",
+            "id": "0043",
+            "name": "barbell full squat",
+            "target": "glutes",
+            "sets": [
+              { "reps": "3", "setNumber": 1, "weight": "190" },
+              { "reps": "3", "setNumber": 2, "weight": "190" },
+              { "reps": "3", "setNumber": 3, "weight": "190" }
+            ]
+          },
+          {
+            "bodyPart": "chest",
+            "equipment": "barbell",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0025.gif",
+            "id": "0025",
+            "name": "barbell bench press",
+            "target": "pectorals",
+            "sets": [
+              { "reps": "3", "setNumber": 1, "weight": "130" },
+              { "reps": "3", "setNumber": 2, "weight": "130" }
+            ]
           }
         ]
       }

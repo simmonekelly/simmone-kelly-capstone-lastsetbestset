@@ -1,29 +1,67 @@
 @use '../../styles/partials/colorsfonts' as *;
 
 .myprofile {
-    background-color: $white;
-    height: 100vh;
-    padding-top: 16px;
+  background-color: $white;
+  height: 100vh;
+  padding-top: 16px;
 
-    &_workout {
-        padding: 10px;
-        background-color: $lightgrey;
+  &_workout {
+    padding: 10px;
+    background-color: $lightgrey;
+    margin: 10px;
+    width: 315px;
 
-        &-container {
-            display: flex;
-            flex-direction: column;
-            max-width: 100%;
-
-            @include desktoptablet{
-            flex-direction: row;
-            width: 100%;
-            justify-content: space-evenly;
-            }
-        }
+    @include desktoptablet{
+        width: 30%;
     }
 
-    //possibly remove
-    &_exercise {
-        padding: 10px 0;
+    &-header {
+      font-size: 22px;
+      font-weight: 500;
     }
+
+    &-date {
+      color: $teal;
+    }
+
+    &-container {
+      display: flex;
+      flex-direction: column;
+      max-width: 100%;
+      flex-wrap: wrap;
+
+      @include desktoptablet {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  //possibly remove
+  &_exercise {
+    display: flex;
+    flex-direction: column;
+    &-title {
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    tr {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    td {
+      padding: 10px 0;
+      width: 55px;
+    }
+
+    &-header {
+      font-weight: 500;
+      td {
+        font-size: 16px;
+      }
+    }
+  }
 }

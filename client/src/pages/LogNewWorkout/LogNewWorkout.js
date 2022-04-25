@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
-import ExerciseList from "../../components/ExerciseList";
 import ExerciseSearchResults from "../../components/ExerciseSearchResults";
 import AddedExercise from "../../components/AddedExercise";
 import './LogNewWorkout.scss'
+import { Link } from "react-router-dom";
 
 const BASE_URL = "https://wger.de/api/v2";
 
@@ -13,10 +13,22 @@ export default class LogNewWorkout extends Component {
     search: "",
     searchResults: [],
     addedExercises: [],
+    token: "",
+    isLoggedIn: true
   };
 
   componentDidMount() {
     console.log("log new workout mounted")
+
+    const token = sessionStorage.getItem("token");
+    console.log(token);
+
+    if (!token) {
+      this.setState({
+        isLoggedIn: false,
+      });
+    } else {
+
     const options = {
       method: "GET",
       url: "https://exercisedb.p.rapidapi.com/exercises",
@@ -31,18 +43,19 @@ export default class LogNewWorkout extends Component {
       .then((res) => {
         this.setState({
           exerciseList: res.data,
+          token: token,
         });
       })
       .catch((error) => {
         console.error(error);
       });
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    //console.log("updated");
+    console.log("updated");
     //condition to check previous state to stop infinite loop for search results
     if (!this.state.search) {
-      //console.log("no search");
       return;
     } else {
       if (this.state.search === prevState.search) {
@@ -85,7 +98,8 @@ export default class LogNewWorkout extends Component {
     console.log("saved workout");
     axios.post('http://localhost:8080/history', {
       exercises: this.state.addedExercises
-    }).then(data => {
+    },{headers: { Authorization: `Bearer ${this.state.token}` }}
+    ).then(data => {
       window.alert(data.data.message)
       window.location.replace("/myprofile");
     }).catch(err => {
@@ -94,13 +108,11 @@ export default class LogNewWorkout extends Component {
   };
 
   //handles set change 
-  //set state to capture the value changes
-  //pass state to server
   handleRepChange = (id, set, e) => {
 
     //find id
     //add unique identifier to set
-    let workingExercise2 = [...this.state.addedExercises].map((exercise) => {
+    let workingExercise = [...this.state.addedExercises].map((exercise) => {
       console.log(exercise)
       if(exercise.id === id) {
         if(!exercise.sets){
@@ -122,7 +134,7 @@ export default class LogNewWorkout extends Component {
     );
     
     this.setState({
-      addedExercises: workingExercise2
+      addedExercises: workingExercise
     })
   }
 
@@ -130,7 +142,7 @@ export default class LogNewWorkout extends Component {
 
     //find id
     //add unique identifier to set
-    let workingExercise2 = [...this.state.addedExercises].map((exercise) => {
+    let workingExercise = [...this.state.addedExercises].map((exercise) => {
       if(exercise.id === id) {
         if(!exercise.sets){
           let newSet = []
@@ -151,14 +163,26 @@ export default class LogNewWorkout extends Component {
     );
   
     this.setState({
-      addedExercises: workingExercise2
+      addedExercises: workingExercise
     })
    
   }
 
 
   render() {
-    return !this.state.exerciseList ? null : (
+
+    if (!this.state.isLoggedIn) {
+      return (
+        <section className="myprofile">
+          <h1>Please Log In To See Start a New Workout</h1>
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
+        </section>
+      );
+    } 
+
+    return !this.state.isLoggedIn ? null : (
       <section className="workoutlog">
         <h1>Log New Workout</h1>
         <form className="workoutlog_exercise-search">
@@ -177,7 +201,7 @@ export default class LogNewWorkout extends Component {
           />
         ))}
         <h3>Added Exercises</h3>
-        <p>Date Completed: {new Date().toLocaleString()}</p>
+        <p>Date Completed: {new Date().toLocaleString('en-US')}</p>
         <form id="workout" className="workoutlog_exercise-container" onSubmit={(e) => this.saveWorkout(e)}>
           {this.state.addedExercises.map((addedExercise) => (
             <AddedExercise

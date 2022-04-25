@@ -60,6 +60,7 @@ export default class Login extends Component {
         this.setState({
           isSignedUp: true,
         });
+        //sessionStorage.
       })
       .catch((err) => console.log(err));
   };

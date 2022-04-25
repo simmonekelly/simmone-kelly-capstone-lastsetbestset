@@ -3,8 +3,9 @@ const fs = require('fs');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
+const { v4: uuidv4 } = require('uuid')
 
-
+//authorises users
 function authorize(req, res, next) {
   
     const authHeader = req.headers.authorization;
@@ -25,50 +26,51 @@ function authorize(req, res, next) {
     }
   }
 
+  formatDate = (date) => {
+    // Return date formatted as 'month/day/year'
+    return (new Date(date)).toLocaleDateString('en-US'); 
+  }
+
 
 //reads all history data
 router.get('/', authorize, (req,res) => {
-    //console.log(req.decoded)
+  console.log(req.decoded)
+  
     fs.readFile('./data/testdata.json', 'utf8', (err, data) => {
         if(err) throw err;
-        const history = JSON.parse(data);
+        const allData = JSON.parse(data);
+        const currentUser = allData.filter(user => user.username === req.decoded.username)
         res.json({
-            history: history,
+            history: currentUser,
             decoded: req.decoded
         })
     })
 })
 
 //add authorize?
-router.post('/', (req, res) => {
-    console.log(req.body)
+router.post('/', authorize, (req, res) => {
     const {exercises} = req.body
-    //const { username, password } = req.body;
+    console.log(req.decoded)
+
     fs.readFile("./data/testdata.json", 'utf8', (err, data) => {
       if(err) throw err;
       const history = JSON.parse(data)
-      const currentUserIndex = history.findIndex(user => user.username === "testu")
-
+      const currentUserIndex = history.findIndex(user => user.username === req.decoded.username)
+      console.log(currentUserIndex)
       const addedExercise = {
-        id: 2, //change to uuid
-        date: "4/20/21",
+        id: uuidv4(),
+        date: formatDate(Date.now()),
         exercises: exercises
       }
 
-      console.log(history[currentUserIndex])
-      //const newHistory = history[currentUserIndex].workouts
-      const newHistory = history
-      console.log(newHistory)
-      newHistory[currentUserIndex].workouts.push(addedExercise)
-      console.log(newHistory)
+      const newHistory = history;
+      newHistory[currentUserIndex].workouts.push(addedExercise);
       const strNewHistory = JSON.stringify(newHistory)
 
       fs.writeFile('./data/testdata.json', strNewHistory, (err) => {
         if(err) throw err;
         console.log('new workout saved')
 
-        //add a res.json to push a messge that it saved 
-        //then reroute to dashboard page
         res.status(200).send({ message: "Workout Saved Successfully!" })
       })
 
