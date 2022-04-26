@@ -26,11 +26,9 @@ export default class AddedExercise extends Component {
   }
 
   componentDidMount() {
-    console.log("set log mounted");
   }
 
   componentDidUpdate() {
-    console.log("set log updated");
   }
 
   render() {

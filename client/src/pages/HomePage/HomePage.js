@@ -24,6 +24,7 @@ export default class HomePage extends Component {
         <div className="home_content-container">
           <div className="home_content">
             <h1>Last Set Best Set</h1>
+            {/* <p>Break through any platau and hit those strength goals!</p> */}
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec
               ultricies dolor, vitae congue nulla. Morbi felis augue, aliquet ac

@@ -11,9 +11,7 @@ export default class Header extends Component {
   };
 
   componentDidMount() {
-    console.log("header mounted");
     const token = sessionStorage.getItem("token");
-    console.log(token);
 
     if (!token) {
       this.setState({
@@ -23,9 +21,7 @@ export default class Header extends Component {
   }
 
   componentDidUpdate(_, prevState) {
-    console.log("header updated");
     const token = sessionStorage.getItem("token");
-    console.log(token);
 
     if (token) {
       this.setState({
@@ -37,7 +33,6 @@ export default class Header extends Component {
   handleLogOut = () => {
     axios.post(logoutUrl, {
     }).then(response => {
-      console.log(response);
       sessionStorage.setItem("token", "");
       this.setState({
         isLoggedIn: false

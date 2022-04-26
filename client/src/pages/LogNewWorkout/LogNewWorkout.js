@@ -18,10 +18,8 @@ export default class LogNewWorkout extends Component {
   };
 
   componentDidMount() {
-    console.log("log new workout mounted")
 
     const token = sessionStorage.getItem("token");
-    console.log(token);
 
     if (!token) {
       this.setState({
@@ -53,15 +51,12 @@ export default class LogNewWorkout extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log("updated");
     //condition to check previous state to stop infinite loop for search results
     if (!this.state.search) {
       return;
     } else {
       if (this.state.search === prevState.search) {
-        //console.log("matches");
       } else {
-        //console.log("running search");
         const PATTERN = this.state.search;
         this.setState({
           searchResults: this.state.exerciseList.filter(exercise => exercise.name.includes(PATTERN))
@@ -72,7 +67,6 @@ export default class LogNewWorkout extends Component {
 
   //handles search bar input change
   handleSearchInputChange = (text) => {
-    //console.log(text);
     this.setState({
       search: text,
     });
@@ -95,7 +89,6 @@ export default class LogNewWorkout extends Component {
   // handles saving the full workout
   saveWorkout = (e) => {
     e.preventDefault();
-    console.log("saved workout");
     axios.post('http://localhost:8080/history', {
       exercises: this.state.addedExercises
     },{headers: { Authorization: `Bearer ${this.state.token}` }}
@@ -113,7 +106,6 @@ export default class LogNewWorkout extends Component {
     //find id
     //add unique identifier to set
     let workingExercise = [...this.state.addedExercises].map((exercise) => {
-      console.log(exercise)
       if(exercise.id === id) {
         if(!exercise.sets){
           let newSet = []
@@ -121,7 +113,6 @@ export default class LogNewWorkout extends Component {
           exercise.sets = newSet
         } else {
           if(exercise.sets.find(sets => sets.setNumber === set)) {
-            console.log('found set')
             exercise.sets[set -1].reps = e.target.value
           } else {
             exercise.sets.push({reps:e.target.value, setNumber:set})
@@ -150,7 +141,6 @@ export default class LogNewWorkout extends Component {
           exercise.sets = newSet
         } else {
           if(exercise.sets.find(sets => sets.setNumber === set)) {
-            console.log('found set')
             exercise.sets[set -1].weight = e.target.value
           } else {
             exercise.sets.push({weight:e.target.value, setNumber:set})
