@@ -11,11 +11,9 @@ export default class HomePage extends Component {
   };
 
   componentDidMount() {
-    console.log("home page mounted");
   }
 
   componentDidUpdate() {
-    console.log(" home page updated");
   }
 
   render() {
@@ -23,10 +21,20 @@ export default class HomePage extends Component {
       <section className="home">
         <div className="home_content-container">
           <div className="home_content">
-            <h1>Last Set Best Set</h1>
+            <h1>Last Set Best&nbsp;Set</h1>
+            {/* <h3>Your New Favorite Way To Log Your Workouts</h3> */}
+            <h3>Log Your Workouts. Get Stronger.</h3>
             {/* <p>Break through any platau and hit those strength goals!</p> */}
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec
+              Optimize your strength progression by logging your workouts.
+              Take the guess work out of trying to rely on your memory and keeping
+              all those numbers in your head, and have them all neatly listed out for you
+              in most recent training order.
+              By keeping track of your training loads week to week, you can
+              more easily apply progressive overload to any training program,
+              helping you break through training&nbsp;plataus.
+
+              {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec
               ultricies dolor, vitae congue nulla. Morbi felis augue, aliquet ac
               enim sed, sodales mollis mauris. Proin posuere porta ornare.
               Suspendisse dictum elit vel pharetra mollis. Vivamus maximus, leo
@@ -38,14 +46,14 @@ export default class HomePage extends Component {
               molestie in. Nullam rutrum varius commodo. Vestibulum ante ipsum
               primis in faucibus orci luctus et ultrices posuere cubilia curae;
               Quisque dapibus libero id rhoncus placerat. Integer hendrerit
-              dolor neque. Maecenas eget leo in metus tempor tempus.
+              dolor neque. Maecenas eget leo in metus tempor tempus. */}
             </p>
             <div className="home_buttons-container">
-              <Link to="/login">
-                <button>Login</button>
-              </Link>
               <Link to="/signup">
                 <button>Sign Up</button>
+              </Link>
+              <Link to="/login">
+                <button>Login</button>
               </Link>
             </div>
           </div>

@@ -31,14 +31,16 @@ export default class Header extends Component {
   }
 
   handleLogOut = () => {
-    axios.post(logoutUrl, {
-    }).then(response => {
-      sessionStorage.setItem("token", "");
-      this.setState({
-        isLoggedIn: false
+    axios
+      .post(logoutUrl, {})
+      .then((response) => {
+        sessionStorage.setItem("token", "");
+        this.setState({
+          isLoggedIn: false,
+        });
       })
-    }).catch((err) => console.log(err));
-  }
+      .catch((err) => console.log(err));
+  };
 
   render() {
     return (
@@ -51,23 +53,28 @@ export default class Header extends Component {
           />
         </Link>
         <div className="header_nav-container">
-          <ul className="header_nav">
-            <Link to="/myprofile">
-              <li>Dashboard</li>
-            </Link>
-            <Link to="/log-new-workout">
-              <li>Start New Workout</li>
-            </Link>
-            {this.state.isLoggedIn ? (
-            <Link to="/" onClick = {(e) => this.handleLogOut(e)}>
-              <li>Log Out</li>
-            </Link>
-            ) : (
+          {this.state.isLoggedIn ? (
+            <ul className="header_nav">
+              <Link to="/myprofile">
+                <li>Dashboard</li>
+              </Link>
+              <Link to="/log-new-workout">
+                <li>Start New Workout</li>
+              </Link>
+              <Link to="/" onClick={(e) => this.handleLogOut(e)}>
+                <li>Log Out</li>
+              </Link>
+            </ul>
+          ) : (
+            <ul className="header_nav">
+              <Link to="/signup">
+                <li>Sign Up</li>
+              </Link>
               <Link to="/login">
-              <li>Log In</li>
-            </Link>
-            )}
-          </ul>
+                <li>Login</li>
+              </Link>
+            </ul>
+          )}
         </div>
       </section>
     );

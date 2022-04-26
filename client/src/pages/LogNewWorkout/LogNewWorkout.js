@@ -164,7 +164,7 @@ export default class LogNewWorkout extends Component {
     if (!this.state.isLoggedIn) {
       return (
         <section className="myprofile">
-          <h1>Please Log In To See Start a New Workout</h1>
+          <h1>Log In To Start a New Workout</h1>
           <Link to="/login">
             <button>Login</button>
           </Link>

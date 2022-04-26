@@ -1,8 +1,9 @@
 @use '../../styles/partials/colorsfonts' as *;
 
 .home {
-  background-image: url("http://localhost:8080/images/pexels-victor-freitas-703016.jpg");
+  background: url("http://localhost:8080/images/pexels-victor-freitas-703016.jpg") rgba(0, 0, 0, 0.5);
   background-size: cover;
+  background-blend-mode: multiply;
   height: 100vh;
   justify-content: flex-start;
   padding-top: 20px;
@@ -10,6 +11,7 @@
   h1{
     font-family: $home-header;
     font-weight: 400;
+    font-size: 60px;
   }
   
 
@@ -20,7 +22,8 @@
 
   &_content {
     width: 80%;
-    background-color: #FFFFFF80;
+    //background-color: #FFFFFF80;
+    color: $white;
     border-radius: 10px;
     padding: 16px;
     display: flex;
@@ -28,7 +31,7 @@
     align-items: center;
 
     @include desktoptablet{
-        width: 45%;
+        width: 55%;
     }
     
 
@@ -43,23 +46,16 @@
       }
     }
 
-    button {
-      background-color: $darkblue;
-      border-radius: 4px;
-      border: none;
-      color: white;
-      padding: 5px 10px;
-    }
   }
 
   &_buttons-container {
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
-      min-width: 55%;
+      justify-content: space-evenly;
+      width: 100%;
 
       @include desktoptablet{
-        min-width: 40%;
+        //min-width: 40%;
       }
 
   }

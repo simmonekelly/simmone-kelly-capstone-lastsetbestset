@@ -43,7 +43,7 @@ export default class Dashboard extends Component {
     if (!this.state.isLoggedIn) {
       return (
         <section className="myprofile">
-          <h1>Please Log In To See Workout History</h1>
+          <h1>Log In To See Workout History</h1>
           <Link to="/login">
             <button>Login</button>
           </Link>
