@@ -1,90 +1,97 @@
 @use '../../styles/partials/colorsfonts' as *;
 
 .workoutlog {
+  background-color: $white;
+  height: 100vh;
+  padding-top: 16px;
+  color: $darkgrey;
+
+  &_exercise {
     background-color: $white;
-    height: 100vh;
-    padding-top: 16px;
-    color: $darkgrey;
+    margin-bottom: 16px;
 
-    &_exercise {
+    &-sets {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      padding-bottom: 16px;
 
-        background-color: $white;
-        margin-bottom: 16px;
+      input {
+        width: 50px;
+      }
+      p {
+        padding: 0;
+      }
 
-        &-sets{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-            padding-bottom: 16px;
-
-            input {
-                width: 50px;
-            }
-            p {
-                padding: 0;
-            }
-
-            svg{
-                fill: $teal;
-                stroke: $darkgrey;
-                stroke-width: 10px;
-            }
-        }
-
-        &-headers{
-            display: flex;
-            flex-direction: row;
-            padding: 10px 0 16px;
-            align-items: center;
-            justify-content: space-evenly;
-            
-
-            img {
-                max-width: 50px;
-                max-height: 50px;
-            }
-
-            h3 {
-                padding: 0
-            }
-        }
-
-        &-rep-headers{
-            @extend .workoutlog_exercise-sets;
-        }
-
-        &-container{
-            background-color: $lightgrey;
-            padding: 16px;
-            min-width: 300px;
-        }
-
-        &-search{
-            padding-bottom: 16px;
-
-            &-results{
-                display: flex;
-                align-items: center;
-                flex-direction: row;
-                border: 1px solid $lightgrey;
-                width: 320px;
-
-                img {
-                    max-width: 64px;
-                    max-height: 64px;
-                }
-
-                p {
-                    padding: 0;
-                }
-            }
-        }
-
+      svg {
+        fill: $teal;
+        stroke: $darkgrey;
+        stroke-width: 10px;
+      }
     }
 
-    button {
-        background-color: $teal;
-        min-width: 150px;
+    &-headers {
+      padding-left: 10px;
+      text-align: right;
+
+      &-container {
+        display: flex;
+        flex-direction: row;
+        padding: 10px 10px 16px;
+        align-items: center;
+        justify-content: space-between;
+
+        img {
+          max-width: 50px;
+          max-height: 50px;
+        }
+        
+        p {
+            padding-bottom: 5px;
+        }
+      }
     }
+
+    &-name {
+        font-weight: 600;
+    }
+
+    &-rep-headers {
+      @extend .workoutlog_exercise-sets;
+    }
+
+    &-container {
+      background-color: $lightgrey;
+      padding: 16px;
+      min-width: 300px;
+      max-width: 500px;
+    }
+
+    &-search {
+      padding-bottom: 16px;
+
+      &-results {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        border: 1px solid $lightgrey;
+        width: 320px;
+
+        img {
+          max-width: 64px;
+          max-height: 64px;
+        }
+
+        p {
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  button {
+    background-color: $teal;
+    min-width: 150px;
+  }
 }
