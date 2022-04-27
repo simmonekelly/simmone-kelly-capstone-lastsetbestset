@@ -16,7 +16,6 @@ export default class Login extends Component {
   };
 
   componentDidMount() {
-      console.log("sign up mounted");
       if (this.props.isSignedUp) {
           this.setState({
               isSignedUp: this.props.isSignedUp
@@ -27,15 +26,12 @@ export default class Login extends Component {
 
   handleLogin = (e) => {
     e.preventDefault();
-    console.log("login submitted");
-    console.log(e.target.username.value);
     axios
       .post(loginUrl, {
         username: e.target.username.value,
         password: e.target.password.value,
       })
       .then((response) => {
-        console.log(response);
         sessionStorage.setItem("token", response.data.token);
         window.location.replace("/myprofile");
       })
@@ -48,7 +44,6 @@ export default class Login extends Component {
   handleSignup = (e) => {
     e.preventDefault();
 
-    console.log("signup submitted");
     axios
       .post(signupUrl, {
         name: e.target.name.value,
@@ -56,7 +51,6 @@ export default class Login extends Component {
         password: e.target.password.value,
       })
       .then((response) => {
-        console.log(response);
         this.setState({
           isSignedUp: true,
         });
@@ -67,9 +61,6 @@ export default class Login extends Component {
 
   render() {
     const { isLoggedIn, isSignedUp } = this.state;
-    console.log(`props: ${this.props.isSignedUp}`)
-    console.log(`is signed up: ${isSignedUp}`);
-    console.log(`is logged in: ${isLoggedIn}`);
     
     return !isSignedUp ? (
       <section className="logsignin">
