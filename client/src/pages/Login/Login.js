@@ -23,21 +23,41 @@ export default class Login extends Component {
     }
   }
 
+  componentDidUpdate(_, prevState) {
+
+    if (this.props.isSignedUp != prevState.isSignedUp) {
+      this.setState({
+        isSignedUp: this.props.isSignedUp,
+      });
+    }
+    if(this.state.errorMessage) {
+      alert(this.state.errorMessage)
+    }
+  }
+
   handleLogin = (e) => {
     e.preventDefault();
-    axios
+
+    if (
+      !e.target.username.value ||
+      !e.target.password.value
+    ) {
+      alert("Please fill out required fields");
+    } else {
+      axios
       .post(loginUrl, {
         username: e.target.username.value,
         password: e.target.password.value,
       })
       .then((response) => {
+        console.log(response)
         sessionStorage.setItem("token", response.data.token);
         window.location.replace("/myprofile");
       })
       .catch((err) => {
-        console.log(err);
-        this.setState({ isLoginError: true, errorMessage: err });
-      });
+        alert(err.response.data.message)
+       });
+    }
   };
 
   handleSignup = (e) => {
@@ -56,16 +76,14 @@ export default class Login extends Component {
           username: e.target.username.value,
           password: e.target.password.value,
         })
-        .then((response) => {
-          if (response.data.success) {
+        .then((res) => {
             this.setState({
               isSignedUp: true,
             });
-          } else {
-            alert("That username already exists, please choose a new one")
-          }
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          alert(err.response.data.message)
+        })
     }
   };
 

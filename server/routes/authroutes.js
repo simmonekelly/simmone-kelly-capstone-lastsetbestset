@@ -16,17 +16,14 @@ const users = {
 router.post("/login", (req, res) => {
   console.log(req.body);
   const { username, password } = req.body;
-  //const user = users[username];
-  //console.log(users);
-  //console.log(user);
 
   fs.readFile("./data/testdata.json", "utf8", (err, data) => {
     if (err) throw err;
     const users = JSON.parse(data);
     if(users.find(user => user.username === username && user.password === password)) {
-      console.log("user found");
+      //console.log("user found");
       const currentUser = users.filter(user => user.username === username)
-      console.log(currentUser)
+      //console.log(currentUser)
       const token = jwt.sign(
         {
           name: currentUser.name,
@@ -36,7 +33,7 @@ router.post("/login", (req, res) => {
       );
       res.json({ token });
     } else {
-    console.log("user not found");
+    //console.log("user not found");
     res.status(403).send({ message: "invalid" });
   }
 });
@@ -52,7 +49,7 @@ router.post("/signup", (req, res) => {
     const users = JSON.parse(data);
 
     if(users.find(user => user.username === username)){
-      res.status(200).json({ success: false });
+      res.status(403).send({ message: "That username already exists, please choose a new one" });
     } else {
       const addedNew = users
 
