@@ -45,35 +45,42 @@ router.post("/login", (req, res) => {
 router.post("/signup", (req, res) => {
   const { username, name, password } = req.body;
 
+
   fs.readFile("./data/testdata.json", "utf8", (err, data) => {
     if (err) throw err;
+
     const users = JSON.parse(data);
-    const addedNew = users
 
-    const newUser = {
-      username: username,
-      id: uuidv4(),
-      name: name,
-      password: password,
-      workouts: []
-    };
+    if(users.find(user => user.username === username)){
+      res.status(200).json({ success: false });
+    } else {
+      const addedNew = users
 
-    addedNew.push(newUser)
-
-    const strAddedUser = JSON.stringify(addedNew);
-
-    fs.writeFile("./data/testdata.json", strAddedUser, (err) => {
-      if (err) throw err;
-      console.log("new user added");
-
-      // const token = jwt.sign({
-      //   name:name,
-      //   username: username,
-      // }, process.env.JWT_SECRET);
-      // res.json({ token })
-
-      res.status(200).json({ success: "true" });
-    });
+      const newUser = {
+        username: username,
+        id: uuidv4(),
+        name: name,
+        password: password,
+        workouts: []
+      };
+  
+      addedNew.push(newUser)
+  
+      const strAddedUser = JSON.stringify(addedNew);
+  
+      fs.writeFile("./data/testdata.json", strAddedUser, (err) => {
+        if (err) throw err;
+        console.log("new user added");
+  
+        // const token = jwt.sign({
+        //   name:name,
+        //   username: username,
+        // }, process.env.JWT_SECRET);
+        // res.json({ token })
+  
+        res.status(200).json({ success: true });
+      });
+    }
   });
 
   //   knex('users')

@@ -16,13 +16,12 @@ export default class Login extends Component {
   };
 
   componentDidMount() {
-      if (this.props.isSignedUp) {
-          this.setState({
-              isSignedUp: this.props.isSignedUp
-          })
-      }
+    if (this.props.isSignedUp) {
+      this.setState({
+        isSignedUp: this.props.isSignedUp,
+      });
+    }
   }
-
 
   handleLogin = (e) => {
     e.preventDefault();
@@ -44,24 +43,35 @@ export default class Login extends Component {
   handleSignup = (e) => {
     e.preventDefault();
 
-    axios
-      .post(signupUrl, {
-        name: e.target.name.value,
-        username: e.target.username.value,
-        password: e.target.password.value,
-      })
-      .then((response) => {
-        this.setState({
-          isSignedUp: true,
-        });
-        //sessionStorage.
-      })
-      .catch((err) => console.log(err));
+    if (
+      !e.target.name.value ||
+      !e.target.username.value ||
+      !e.target.password.value
+    ) {
+      alert("Please fill out required fields");
+    } else {
+      axios
+        .post(signupUrl, {
+          name: e.target.name.value,
+          username: e.target.username.value,
+          password: e.target.password.value,
+        })
+        .then((response) => {
+          if (response.data.success) {
+            this.setState({
+              isSignedUp: true,
+            });
+          } else {
+            alert("That username already exists, please choose a new one")
+          }
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   render() {
     const { isLoggedIn, isSignedUp } = this.state;
-    
+
     return !isSignedUp ? (
       <section className="logsignin">
         <SignUpComponent handleSignup={this.handleSignup} />
