@@ -55,20 +55,7 @@ export default class LogNewWorkout extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    //condition to check previous state to stop infinite loop for search results
-    if (!this.state.search) {
-      return;
-    } else {
-      if (this.state.search === prevState.search) {
-      } else {
-        const PATTERN = this.state.search;
-        this.setState({
-          searchResults: this.state.exerciseList.filter((exercise) =>
-            exercise.name.includes(PATTERN)
-          ),
-        });
-      }
-    }
+    
   }
 
   //handles search bar input change
@@ -77,6 +64,16 @@ export default class LogNewWorkout extends Component {
       search: text,
     });
   };
+
+  search = () => {
+    const PATTERN = this.state.search;
+    this.setState({
+      searchResults: this.state.exerciseList.filter((exercise) =>
+        exercise.name.includes(PATTERN)
+      ),
+    });
+
+  }
 
   //handles workout selector
   selectWorkout = (id) => {
@@ -179,19 +176,23 @@ export default class LogNewWorkout extends Component {
           </Link>
         </section>
       );
-    }
+    } else {
 
-    return !this.state.isLoggedIn ? null : (
+    return (
       <section className="workoutlog">
         <h1>Log New Workout</h1>
-        <form className="workoutlog_exercise-search">
           <input
-            type="text"
+            type="search"
             placeholder="Search Exercise"
             value={this.state.search}
+            onKeyUp={(e) => {
+              if (e.key === "Enter") {
+                this.search()
+              }
+            }
+            }
             onChange={(e) => this.handleSearchInputChange(e.target.value)}
           ></input>
-        </form>
         {this.state.searchResults.map((exercise) => (
           <ExerciseSearchResults
             exercise={exercise}
@@ -199,8 +200,7 @@ export default class LogNewWorkout extends Component {
             selectWorkout={this.selectWorkout}
           />
         ))}
-        <h3>Added Exercises</h3>
-        <p>Date Started: {new Date().toLocaleString("en-US")}</p>
+        <p className="workoutlog_date">Date Started: {new Date().toLocaleString("en-US")}</p>
         <form
           id="workout"
           className="workoutlog_exercise-container"
@@ -221,5 +221,5 @@ export default class LogNewWorkout extends Component {
         </form>
       </section>
     );
-  }
+  }}
 }
