@@ -179,9 +179,9 @@ export default class LogNewWorkout extends Component {
           </Link>
         </section>
       );
-    }
+    } else {
 
-    return !this.state.isLoggedIn ? null : (
+    return (
       <section className="workoutlog">
         <h1>Log New Workout</h1>
         <form className="workoutlog_exercise-search">
@@ -221,5 +221,5 @@ export default class LogNewWorkout extends Component {
         </form>
       </section>
     );
-  }
+  }}
 }

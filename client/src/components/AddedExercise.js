@@ -35,6 +35,11 @@ export default class AddedExercise extends Component {
       );
       if (arr.length > 0) return arr;
     });
+    console.log(filteredWorkouts)
+
+    if (filteredWorkouts.length === 0) {
+      return
+    }
 
     const lastCompleted = filteredWorkouts[0].exercises.find(
       (exercise) => exercise.id === this.props.addedExercise.id
@@ -55,7 +60,7 @@ export default class AddedExercise extends Component {
           <img src={addedExercise.gifUrl} />
           <div className="workoutlog_exercise-headers">
             <p className="workoutlog_exercise-name">{addedExercise.name}</p>
-            <p>{`${this.state.lastSetDate}: ${this.state.lastSet.reps}x${this.state.lastSet.weight}lbs`}</p>
+            {this.state.lastSetDate ? (<p>{`${this.state.lastSetDate}: ${this.state.lastSet.reps}x${this.state.lastSet.weight}lbs`}</p>) : null }
           </div>
         </div>
         <div className="workoutlog_exercise-rep-headers">
