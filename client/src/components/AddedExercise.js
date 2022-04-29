@@ -35,7 +35,6 @@ export default class AddedExercise extends Component {
       );
       if (arr.length > 0) return arr;
     });
-    console.log(filteredWorkouts)
 
     if (filteredWorkouts.length === 0) {
       return
