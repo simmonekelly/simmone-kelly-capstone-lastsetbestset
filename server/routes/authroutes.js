@@ -16,17 +16,14 @@ const users = {
 router.post("/login", (req, res) => {
   console.log(req.body);
   const { username, password } = req.body;
-  //const user = users[username];
-  //console.log(users);
-  //console.log(user);
 
   fs.readFile("./data/testdata.json", "utf8", (err, data) => {
     if (err) throw err;
     const users = JSON.parse(data);
     if(users.find(user => user.username === username && user.password === password)) {
-      console.log("user found");
+      //console.log("user found");
       const currentUser = users.filter(user => user.username === username)
-      console.log(currentUser)
+      //console.log(currentUser)
       const token = jwt.sign(
         {
           name: currentUser.name,
@@ -36,7 +33,7 @@ router.post("/login", (req, res) => {
       );
       res.json({ token });
     } else {
-    console.log("user not found");
+    //console.log("user not found");
     res.status(403).send({ message: "invalid" });
   }
 });
@@ -45,35 +42,42 @@ router.post("/login", (req, res) => {
 router.post("/signup", (req, res) => {
   const { username, name, password } = req.body;
 
+
   fs.readFile("./data/testdata.json", "utf8", (err, data) => {
     if (err) throw err;
+
     const users = JSON.parse(data);
-    const addedNew = users
 
-    const newUser = {
-      username: username,
-      id: uuidv4(),
-      name: name,
-      password: password,
-      workouts: []
-    };
+    if(users.find(user => user.username === username)){
+      res.status(403).send({ message: "That username already exists, please choose a new one" });
+    } else {
+      const addedNew = users
 
-    addedNew.push(newUser)
-
-    const strAddedUser = JSON.stringify(addedNew);
-
-    fs.writeFile("./data/testdata.json", strAddedUser, (err) => {
-      if (err) throw err;
-      console.log("new user added");
-
-      // const token = jwt.sign({
-      //   name:name,
-      //   username: username,
-      // }, process.env.JWT_SECRET);
-      // res.json({ token })
-
-      res.status(200).json({ success: "true" });
-    });
+      const newUser = {
+        username: username,
+        id: uuidv4(),
+        name: name,
+        password: password,
+        workouts: []
+      };
+  
+      addedNew.push(newUser)
+  
+      const strAddedUser = JSON.stringify(addedNew);
+  
+      fs.writeFile("./data/testdata.json", strAddedUser, (err) => {
+        if (err) throw err;
+        console.log("new user added");
+  
+        // const token = jwt.sign({
+        //   name:name,
+        //   username: username,
+        // }, process.env.JWT_SECRET);
+        // res.json({ token })
+  
+        res.status(200).json({ success: true });
+      });
+    }
   });
 
   //   knex('users')

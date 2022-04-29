@@ -16,52 +16,80 @@ export default class Login extends Component {
   };
 
   componentDidMount() {
-      if (this.props.isSignedUp) {
-          this.setState({
-              isSignedUp: this.props.isSignedUp
-          })
-      }
+    if (this.props.isSignedUp) {
+      this.setState({
+        isSignedUp: this.props.isSignedUp,
+      });
+    }
   }
 
+  componentDidUpdate(_, prevState) {
+
+    if (this.props.isSignedUp != prevState.isSignedUp) {
+      this.setState({
+        isSignedUp: this.props.isSignedUp,
+      });
+    }
+    if(this.state.errorMessage) {
+      alert(this.state.errorMessage)
+    }
+  }
 
   handleLogin = (e) => {
     e.preventDefault();
-    axios
+
+    if (
+      !e.target.username.value ||
+      !e.target.password.value
+    ) {
+      alert("Please fill out required fields");
+    } else {
+      axios
       .post(loginUrl, {
         username: e.target.username.value,
         password: e.target.password.value,
       })
       .then((response) => {
+        console.log(response)
         sessionStorage.setItem("token", response.data.token);
         window.location.replace("/myprofile");
       })
       .catch((err) => {
-        console.log(err);
-        this.setState({ isLoginError: true, errorMessage: err });
-      });
+        alert(err.response.data.message)
+       });
+    }
   };
 
   handleSignup = (e) => {
     e.preventDefault();
 
-    axios
-      .post(signupUrl, {
-        name: e.target.name.value,
-        username: e.target.username.value,
-        password: e.target.password.value,
-      })
-      .then((response) => {
-        this.setState({
-          isSignedUp: true,
-        });
-        //sessionStorage.
-      })
-      .catch((err) => console.log(err));
+    if (
+      !e.target.name.value ||
+      !e.target.username.value ||
+      !e.target.password.value
+    ) {
+      alert("Please fill out required fields");
+    } else {
+      axios
+        .post(signupUrl, {
+          name: e.target.name.value,
+          username: e.target.username.value,
+          password: e.target.password.value,
+        })
+        .then((res) => {
+            this.setState({
+              isSignedUp: true,
+            });
+        })
+        .catch((err) => {
+          alert(err.response.data.message)
+        })
+    }
   };
 
   render() {
     const { isLoggedIn, isSignedUp } = this.state;
-    
+
     return !isSignedUp ? (
       <section className="logsignin">
         <SignUpComponent handleSignup={this.handleSignup} />
