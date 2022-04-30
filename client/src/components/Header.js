@@ -22,7 +22,11 @@ export default class Header extends Component {
 
   componentDidUpdate(_, prevState) {
     const token = sessionStorage.getItem("token");
-
+    console.log(`prevstate: ${prevState.isLoggedIn}`)
+    console.log(`currentstate: ${this.state.isLoggedIn}`)
+    if(prevState.isLoggedIn === this.state.isLoggedIn) {
+      return
+    }
     if (token) {
       this.setState({
         isLoggedIn: true,
@@ -55,10 +59,14 @@ export default class Header extends Component {
         <div className="header_nav-container">
           {this.state.isLoggedIn ? (
             <ul className="header_nav">
-              <Link to="/myprofile">
+              <Link to="/myprofile"
+                className= {this.props.location.pathname.includes("profile") ? "active": ""}
+                >
                 <li>Dashboard</li>
               </Link>
-              <Link to="/log-new-workout">
+              <Link to="/log-new-workout"
+                className= {this.props.location.pathname.includes("log") ? "active": ""}
+                >
                 <li>Start New Workout</li>
               </Link>
               <Link to="/" onClick={(e) => this.handleLogOut(e)}>

@@ -24,11 +24,24 @@ section {
     flex-direction: row;
     list-style: none;
     padding-inline-start: 0;
+    margin: 0;
+    height: 100%;
 
     a {
       padding: 0 16px;
       color: $white;
       text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .active {
+      background-color: $teal;
+
+    }
+
+    &-container {
+      height: 100%;
     }
   }
 
@@ -36,6 +49,7 @@ section {
     max-width: 75px;
     max-height: 75px;
   }
+
 }
 
 //fonts
@@ -59,6 +73,12 @@ button {
   color:$white;
   padding: 5px 10px;
   width: 120px;
+}
+
+input {
+  :focus {
+    border-color: $teal;
+  }
 }
 
 h1 {
