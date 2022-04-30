@@ -22,8 +22,7 @@ export default class Header extends Component {
 
   componentDidUpdate(_, prevState) {
     const token = sessionStorage.getItem("token");
-    console.log(`prevstate: ${prevState.isLoggedIn}`)
-    console.log(`currentstate: ${this.state.isLoggedIn}`)
+    
     if(prevState.isLoggedIn === this.state.isLoggedIn) {
       return
     }
