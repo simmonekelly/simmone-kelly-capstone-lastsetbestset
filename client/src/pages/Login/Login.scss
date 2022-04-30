@@ -1,8 +1,9 @@
 @use '../../styles/partials/colorsfonts' as *;
 
 .logsignin {
-  background-image: url("http://localhost:8080/images/pexels-victor-freitas-703016.jpg");
+  background: url("http://localhost:8080/images/pexels-victor-freitas-703016.jpg") rgba(0, 0, 0, 0.5);
   background-size: cover;
+  background-blend-mode: multiply;
   height: 100vh;
   justify-content: flex-start;
   padding-top: 20px;
