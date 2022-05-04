@@ -74,10 +74,14 @@ export default class Header extends Component {
             </ul>
           ) : (
             <ul className="header_nav">
-              <Link to="/signup">
+              <Link to="/signup"
+                className= {this.props.location.pathname.includes("signup") ? "active": ""}
+              >
                 <li>Sign Up</li>
               </Link>
-              <Link to="/login">
+              <Link to="/login"
+                className= {this.props.location.pathname.includes("login") ? "active": ""}
+              >
                 <li>Login</li>
               </Link>
             </ul>
