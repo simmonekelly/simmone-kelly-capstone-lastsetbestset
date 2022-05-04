@@ -48,9 +48,5 @@ app.use('/auth',authRoutes);
 
 
 app.listen(PORT, () => {
-    // fs.writeFile("./data/workoutdb.json", getWorkoutData(), (err) => {
-    //     if (err) throw err;
-    //     else console.log("Workout Libarary data set");
-    //   });
-    console.log('🚀 We have takeoff on port 8080')
+    console.log(`🚀 We have takeoff on port ${PORT}`)
 })
