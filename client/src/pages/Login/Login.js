@@ -3,7 +3,7 @@ import "../Login/Login.scss";
 import axios from "axios";
 import SignUpComponent from "../../components/SignUpComponent";
 import LoginComponent from "../../components/LoginComponent";
-const baseUrl = "http://localhost:8080";
+const baseUrl = "https://lastsetbestset-server.herokuapp.com";
 const loginUrl = `${baseUrl}/auth/login`;
 const signupUrl = `${baseUrl}/auth/signup`;
 

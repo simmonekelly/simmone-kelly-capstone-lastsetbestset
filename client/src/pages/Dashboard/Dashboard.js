@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import "../Dashboard/Dashboard.scss";
 import { Link } from "react-router-dom"
+const BASE_URL = 'https://lastsetbestset-server.herokuapp.com'
 
 export default class Dashboard extends Component {
   state = {
@@ -20,7 +21,7 @@ export default class Dashboard extends Component {
       });
     } else {
       axios
-        .get("http://localhost:8080/history", {
+        .get(`${BASE_URL}/history`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => {
@@ -30,7 +31,6 @@ export default class Dashboard extends Component {
           });
         })
         .catch((err) => {
-          //fix error where server crashes
           console.log(err);
         });
     }

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import React, { Component } from "react";
 import axios from "axios";
 
-const baseUrl = "http://localhost:8080";
+const baseUrl = "https://lastsetbestset-server.herokuapp.com";
 const logoutUrl = `${baseUrl}/auth/logout`;
 
 export default class Header extends Component {
@@ -52,7 +52,7 @@ export default class Header extends Component {
           <img
             alt="logo"
             className="header_logo"
-            src="http://localhost:8080/images/lsbs-logo.png"
+            src="https://lastsetbestset-server.herokuapp.com/images/lsbs-logo.png"
           />
         </Link>
         <div className="header_nav-container">

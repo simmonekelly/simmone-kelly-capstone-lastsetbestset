@@ -5,7 +5,7 @@ import AddedExercise from "../../components/AddedExercise";
 import "./LogNewWorkout.scss";
 import { Link } from "react-router-dom";
 
-const BASE_URL = "https://wger.de/api/v2";
+const BASE_URL = "https://lastsetbestset-server.herokuapp.com";
 
 export default class LogNewWorkout extends Component {
   state = {
@@ -40,7 +40,7 @@ export default class LogNewWorkout extends Component {
       const [firstResponse, secondResponse] = await Promise.all([
         axios.request(options),
         axios.get(
-          "http://localhost:8080/history", {
+          `${BASE_URL}/history`, {
         headers: { Authorization: `Bearer ${token}`}
         }),
       ]);
@@ -94,7 +94,7 @@ export default class LogNewWorkout extends Component {
     e.preventDefault();
     axios
       .post(
-        "http://localhost:8080/history",
+        `${BASE_URL}/history`,
         {
           exercises: this.state.addedExercises,
         },

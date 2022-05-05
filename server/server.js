@@ -8,7 +8,7 @@ const fs = require("fs");
 const axios = require("axios");
 
 require('dotenv').config();
-const { PORT, REACT_APP_BACKEND_URL } = process.env;
+//const { PORT, REACT_APP_BACKEND_URL } = process.env;
 
 app.use(cors());
 app.use(express.json());
@@ -47,6 +47,6 @@ app.use('/auth',authRoutes);
 
 
 
-app.listen(PORT, () => {
-    console.log(`🚀 We have takeoff on port ${PORT}`)
+app.listen(process.env.PORT || 8080, () => {
+    console.log(`🚀 We have takeoff`)
 })
