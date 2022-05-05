@@ -9,7 +9,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Setup Instructions
-You will need to create and configure a .env file of your own in order to run this app. Please refer to the sample.env on how that should look.
+You will need to create and configure a .env file of your own in order to run this app locally. Please refer to the sample.env on how that should look.
+
+Demo site [here](lastsetbestset.herokuapp.com/).
+- test username: testu
+- test password: testp
 
 ## Project Overview
 ### 1.1 Description
